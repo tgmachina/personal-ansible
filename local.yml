@@ -1,0 +1,20 @@
+---
+- name: "Personal Machine Setup"
+  vars:
+    normal_user: thomas
+  hosts: localhost
+  become: true
+  pre_tasks:
+    - name: Update apt repositories
+      apt: update_cache=yes
+      when: ansible_facts['os_family'] == 'Debian'
+      changed_when: False
+
+    - name: Update and upgrade brew
+      become_user: "{{ normal_user }}"
+      community.general.homebrew:
+        path: /home/linuxbrew/.linuxbrew/bin
+        update_homebrew: yes
+        upgrade_all: yes
+  tasks:
+    - include: tasks/brew.yml

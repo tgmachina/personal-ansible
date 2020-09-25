@@ -1,0 +1,5 @@
+- name: Install frequently used packages with brew
+  become_user: "{{ normal_user }}"
+  community.general.homebrew:
+    path: /home/linuxbrew/.linuxbrew/bin
+    name: git,python@3.8,node,golang
