@@ -1,0 +1,12 @@
+- name: Install classically confined snap apps
+  community.general.snap:
+    name: skype
+    classic: yes
+
+- name: Install snap apps
+  community.general.snap:
+    name:
+      - chromium
+      - discord
+      - foliate
+      - signal-desktop
