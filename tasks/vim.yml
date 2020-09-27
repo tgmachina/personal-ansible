@@ -1,0 +1,41 @@
+- name: custom .inputrc for shell vi bindings
+  become_user: "{{ normal_user }}"
+  get_url:
+    url: "https://raw.githubusercontent.com/tgmachina/dotfiles/main/.inputrc"
+    dest: $HOME/.inputrc
+
+- name: create vim color directory
+  become_user: "{{ normal_user }}"
+  file:
+    path: $HOME/.vim/colors
+    state: directory
+    mode: "0700"
+
+- name: create vim bundle directory
+  become_user: "{{ normal_user }}"
+  file:
+    path: $HOME/.vim/bundle
+    state: directory
+    mode: '0700'
+
+- name: fetch vimrc
+  become_user: "{{ normal_user }}"
+  get_url:
+    url: "https://raw.githubusercontent.com/tgmachina/dotfiles/main/vim/.vimrc"
+    dest: $HOME/.vimrc
+
+- name: fetch molokai color
+  become_user: "{{ normal_user }}"
+  get_url:
+    url: "https://raw.githubusercontent.com/tgmachina/dotfiles/main/vim/molokai.vim"
+    dest: $HOME/.vim/colors/molokai.vim
+
+- name: get vundle
+  become_user: "{{ normal_user }}"
+  git:
+    repo: "https://github.com/VundleVim/Vundle.vim.git"
+    dest: $HOME/.vim/bundle/Vundle.vim
+
+- name: vundle plugin install
+  become_user: "{{ normal_user }}"
+  shell: vim +PluginInstall +qall

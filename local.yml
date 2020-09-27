@@ -18,3 +18,5 @@
         upgrade_all: yes
   tasks:
     - include: tasks/brew.yml
+    - include: tasks/applications.yml
+    - include: tasks/vim.yml
