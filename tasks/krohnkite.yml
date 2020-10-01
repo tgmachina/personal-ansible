@@ -13,3 +13,10 @@
   shell: "PATH=/home/linuxbrew/.linuxbrew/bin:$PATH make install" 
   args:
     chdir: /tmp/krohnkite
+
+- name: fetch global keyboard shortcuts (used for krohnkite)
+  become_user: "{{ normal_user }}"
+  get_url:
+    url: "https://raw.githubusercontent.com/tgmachina/dotfiles/main/kde/kglobalshortcutsrc"
+    dest: $HOME/.config/kglobalshortcutsrc
+
