@@ -10,12 +10,19 @@
       when: ansible_facts['os_family'] == 'Debian'
       changed_when: False
 
+    - name: Install basic, required packages
+      apt:
+        pkg:
+          - vim
+          - curl
+
     - name: Update and upgrade brew
       become_user: "{{ normal_user }}"
       community.general.homebrew:
         path: /home/linuxbrew/.linuxbrew/bin
         update_homebrew: yes
         upgrade_all: yes
+
   tasks:
     - include: tasks/brew.yml
     - include: tasks/applications.yml
