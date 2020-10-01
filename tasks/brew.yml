@@ -2,4 +2,4 @@
   become_user: "{{ normal_user }}"
   community.general.homebrew:
     path: /home/linuxbrew/.linuxbrew/bin
-    name: git,python@3.8,node,golang
+    name: git,tig,python@3.8,node,golang
