@@ -1,0 +1,15 @@
+- name: get krohnkite
+  become_user: "{{ normal_user }}"
+  git:
+    repo: "https://github.com/esjeon/krohnkite.git"
+    dest: /tmp/krohnkite
+
+- name: install krohnkite build dependency typescript
+  become_user: "{{ normal_user }}"
+  shell: "PATH=/home/linuxbrew/.linuxbrew/bin:$PATH npm i -g typescript"
+
+- name: install krohnkite 
+  become_user: "{{ normal_user }}"
+  shell: "PATH=/home/linuxbrew/.linuxbrew/bin:$PATH make install" 
+  args:
+    chdir: /tmp/krohnkite
