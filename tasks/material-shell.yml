@@ -1,0 +1,14 @@
+- name: Install gnome-tweaks
+  apt:
+    pkg:
+      - gnome-tweaks
+
+- name: Install material shell for GNOME
+  become_user: "{{ normal_user }}"
+  git:
+    repo: https://github.com/material-shell/material-shell.git
+    dest: ~/.local/share/gnome-shell/extensions/material-shell@papyelgringo
+
+- name: Enable material shell
+  become_user: "{{ normal_user }}"
+  shell: "gnome-extensions enable material-shell@papyelgringo"
