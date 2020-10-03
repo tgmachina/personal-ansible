@@ -1,3 +1,8 @@
+- name: Install applications through apt
+  apt:
+    pkg:
+      - keepassxc
+
 - name: Install classically confined snap apps
   community.general.snap:
     name: skype
