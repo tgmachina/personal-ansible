@@ -27,4 +27,5 @@
     - include: tasks/brew.yml
     - include: tasks/applications.yml
     - include: tasks/vim.yml
+    - include: tasks/todo-txt.yml
     - include: tasks/krohnkite.yml

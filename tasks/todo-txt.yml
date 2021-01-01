@@ -1,0 +1,5 @@
+- name: custom .todo.cfg for todotxt
+  become_user: "{{ normal_user }}"
+  get_url:
+    url: "https://raw.githubusercontent.com/tgmachina/dotfiles/main/todo-txt/.todo.cfg"
+    dest: $HOME/.todo.cfg
